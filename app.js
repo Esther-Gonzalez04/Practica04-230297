@@ -101,7 +101,7 @@ app.post('/logout', (req, res) => {
     req.session.destroy((err) => {
         if (err) {
             return res.status(500).json({
-                message: 'Error al cerrar sesión'
+                message: 'Error no se pudo cerrar sesión'
             });
         }
     });
@@ -116,7 +116,7 @@ app.post('/update', (req, res) => {
 
     if (!req.session.sessionID || !sessions[req.session.sessionID]) {
         return res.status(404).json({
-            message: 'No existe una sesión activa'
+            message: 'No hay una sesión activa'
         });
     }
 
@@ -180,7 +180,7 @@ setInterval(() => {
     for (const sessionID in sessions) {
         const session = sessions[sessionID];
         const idleTime = now.diff(moment(session.lastAccessed, 'YYYY/MM/DD HH:mm:ss'), 'seconds');
-        if (idleTime > 120) { // 2 minutos
+        if (idleTime > 120) { 
             delete sessions[sessionID];
         }
     }
