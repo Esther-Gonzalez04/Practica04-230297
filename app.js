@@ -241,4 +241,4 @@ setInterval(async () => {
       await Session.updateOne({ sessionID: session.sessionID }, { status: `Inactiva por ${inactividad} minutos` });
     }
   }
-}, 60000); // Se ejecuta cada minuto
+}, 60000); // Se ejecuta cada minutos
